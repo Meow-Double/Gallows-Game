@@ -6,8 +6,76 @@
     <title>Inside</title>
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/app.js" defer></script>
-    <script src="./libs/rain.js" defer></script>
+    <!-- <script src="./libs/rain.js" defer></script> -->
     <script src="./libs/particles.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <main>
+     
+      <section class="menu">
+        <div class="container">
+          <ul class="list">
+            <li><button class="menu__btn menuBtn">Начать игру</button></li>
+            <li><button class="menu__btn menuBtn">Правила игры</button></li>
+            <li><button class="menu__btn menuBtn">Разработчик сайта</button></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="layers__container hidden">
+        
+        <div class="layers__item layer-1" style="background-image: url(./img/bg-1.png)"></div>
+        <div class="layers__item layer-2" style="background-image: url(./img/middle-2.png)"></div>
+        <div class="layers__item layer-3" style="background-image: url(./img/middle-1-r.png)"></div>
+        <div class="layers__item stick" style="background-image: url(./img/stick.png)"></div>
+        <div class="layers__item layer-4" style="background-image: url(./img/front.png)"></div>
+        <img class="person" src="./img/person.png" alt="">
+        
+        <!-- <div class="layers__item layer-5">
+          <canvas class="rain"></canvas>
+        </div> -->
+        <canvas class="particles slider__layer" data-swiper-parallax="25%" data-color="#938086"></canvas>
+
+      
+    </main>
+
+    <section class="main">
+      <div class="error"></div>
+      <div class="info">
+        <p class="title">Загадонное слово</p>
+        <span class="word">_ _ _ _ _</span>
+        <p class="your-text">Вы ввели: <span class="write-word">_</span></p>
+      </div>
+      
+      <div class="errorsBlock">
+        <div >Ошибки:</div>
+        <ul class="errorsList">
+          <!-- <li>a</li>
+          <li>b</li>
+          <li>c</li> -->
+        </ul>
+      </div>
+      
+      <audio class="media__audio" src="./music/main-audio.mp3" loop></audio>
+    </section>
+
+    <div class="back">
+      <button class="back-btn menuBtn">Вернуться назад</button>
+      <button class="back-btn menuBtn"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path fill="currentColor" d="m892.1 737.8l-110.3-63.7a15.9 15.9 0 0 0-21.7 5.9l-19.9 34.5c-4.4 7.6-1.8 17.4 5.8 21.8L856.3 800a15.9 15.9 0 0 0 21.7-5.9l19.9-34.5c4.4-7.6 1.7-17.4-5.8-21.8M760 344a15.9 15.9 0 0 0 21.7 5.9L892 286.2c7.6-4.4 10.2-14.2 5.8-21.8L878 230a15.9 15.9 0 0 0-21.7-5.9L746 287.8a15.99 15.99 0 0 0-5.8 21.8zm174 132H806c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16h128c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16M625.9 115c-5.9 0-11.9 1.6-17.4 5.3L254 352H90c-8.8 0-16 7.2-16 16v288c0 8.8 7.2 16 16 16h164l354.5 231.7c5.5 3.6 11.6 5.3 17.4 5.3c16.7 0 32.1-13.3 32.1-32.1V147.1c0-18.8-15.4-32.1-32.1-32.1"/></svg></button>
+    </div>
+  </section>
+
+  <div class="far far-left"></div> 
+  <div class="far far-right"></div> 
+  <audio class="audio-car" src="./music/00292.mp3" loop></audio>
+  <audio class="knopka" src="./music/knopka-vyiklyucheniya-na-nastolnoy-lampe1.mp3"></audio>
+  <audio class="error-audio" src="./music/zvuk-oshybki-met.mp3"></audio>
+    <!-- <video
+      src="./videos/smoke-background-optimized.mp4"
+      class="showcase__video layer-6"
+      autoplay
+      muted
+      loop
+    ></video> -->
+  </body>
 </html>
