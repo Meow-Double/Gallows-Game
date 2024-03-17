@@ -10,6 +10,10 @@ document.addEventListener('mousemove', (e) => {
 const audio = document.querySelector('.media__audio');
 
 const sticks = document.querySelectorAll('.stick');
+
+const glassesAudio = document.querySelector('.glasses-audio');
+const skripAudio = document.querySelector('.skrip-audio');
+
 // window.onload = function () {
 
 // };
@@ -38,6 +42,11 @@ playBtn.addEventListener('click', () => {
   layers.classList.remove('hidden');
   mainSection.classList.remove('hidden');
   scene = 2;
+
+  const far = document.querySelectorAll('.far');
+  const audioCar = document.querySelector('.audio-car');
+
+  startCarAudio(far, audioCar);
 });
 
 // ----------------------------------Game logic------------
@@ -45,11 +54,11 @@ const titles = ['животные', 'цвета', 'фрукты', 'цветы'];
 const wordsArray = [
   ['бык', 'обезьяна', 'лиса', 'рысь', 'хамелеон', 'утка', 'норка'],
   ['оранжевый', 'бирюзовый', 'бордовый', 'бежевый', 'бурый'],
-  ['ананас', "авокадо","гранат", "грейпфрут", "киви", "лимон" ],
+  ['ананас', 'авокадо', 'гранат', 'грейпфрут', 'киви', 'лимон'],
   ['василёк', 'гвоздика', 'лаванда', 'папоротник', 'лилия'],
 ];
 const wordType = getRandomInt(titles.length);
-const wordNew = wordsArray[wordType]
+const wordNew = wordsArray[wordType];
 
 let randomNumber = getRandomInt(wordNew.length);
 let currentWord = wordNew[randomNumber].toLocaleLowerCase();
@@ -135,20 +144,32 @@ function errorDisplay(key) {
     if (sound) {
       errorAudio.play();
     }
-  }
 
-  // const person = document.querySelector('.person');
+    // const person = document.querySelector('.person');
 
-  sticks.forEach((item) => item.classList.add('bg--hidden'));
-  sticks.forEach((item, index) => {
-    if (errors === index) return item.classList.remove('bg--hidden');
-  });
-  if (errors === 6) {
-    setTimeout(() => {
-      alert('Вы проиграли');
-      location.reload();
-      resetState();
-    }, 400);
+    sticks.forEach((item) => item.classList.add('bg--hidden'));
+    sticks.forEach((item, index) => {
+      if (errors === index) return item.classList.remove('bg--hidden');
+    });
+    if (errors === 1) {
+      skripAudio.play();
+    }
+
+    if (errors === 2 || errors === 3 || errors === 4) {
+      glassesAudio.play();
+    }
+
+    if (errors === 5) {
+      skripAudio.play();
+    }
+    if (errors === 6) {
+      skripAudio.play();
+      setTimeout(() => {
+        alert('Вы проиграли');
+        location.reload();
+        resetState();
+      }, 400);
+    }
   }
 }
 
@@ -168,22 +189,6 @@ window.onload = () => {
   });
 };
 
-const far = document.querySelectorAll('.far');
-const audioCar = document.querySelector('.audio-car');
-
-if (scene === 2) {
-  setTimeout(() => {
-    far.forEach((item) => item.classList.add('far--active'));
-    if (sound) {
-      audioCar.play();
-    }
-  }, 2900);
-  setTimeout(() => {
-    far.forEach((item) => item.classList.remove('far--active'));
-    audioCar.pause();
-  }, 10000);
-}
-
 // ----------------Menu
 
 const backJs = document.querySelector('.back-js');
@@ -202,7 +207,10 @@ backJs.addEventListener('click', () => {
 soundJs.addEventListener('click', () => {
   if (sound) {
     audio.pause();
-    audioCar.pause();
+    try {
+      audioCar.pause();
+    } catch (error) {
+    }
     // btnMenuAudio.pause();
     soundStart.classList.add('sound-hidden');
     soundPause.classList.remove('sound-hidden');
@@ -254,4 +262,23 @@ function resetState() {
   randomNumber = getRandomInt(wordsArray.length);
   currentWord = wordsArray[randomNumber].toLocaleLowerCase();
   outWord = currentWord.split('').map(() => '_');
+}
+
+function startCarAudio(far, audioCar) {
+
+      setTimeout(() => {
+        far.forEach((item) => item.classList.add('far--active'));
+        if (sound) {
+          // audioCar.play();
+        }
+      }, 10000);
+      setTimeout(() => {
+        far.forEach((item) => item.classList.remove('far--active'));
+        // audioCar.pause();
+      }, 20000);
+      setTimeout(() => {
+        return startCarAudio(far, audioCar);
+      }, 40000)
+
+
 }
